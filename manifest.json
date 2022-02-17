@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "name": "stream scraper",
+  "description": "do scraping to microsoft stream website",
+  "content_scripts": [{
+    "matches": ["https://web.microsoftstream.com/user/*"],
+    "js": [
+      "script.js"
+    ],
+    "run_at": "document_idle"
+  }],
+  "permissions": ["http://*/*", "https://*/*", "activeTab", "tabs"]
+}
