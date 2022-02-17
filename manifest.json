@@ -4,7 +4,7 @@
   "name": "stream scraper",
   "description": "do scraping to microsoft stream website",
   "content_scripts": [{
-    "matches": ["https://web.microsoftstream.com/user/*"],
+    "matches": ["https://web.microsoftstream.com/channel/*"],
     "js": [
       "script.js"
     ],
