@@ -9,6 +9,5 @@
       "script.js"
     ],
     "run_at": "document_idle"
-  }],
-  "permissions": ["http://*/*", "https://*/*", "activeTab", "tabs"]
+  }]
 }
