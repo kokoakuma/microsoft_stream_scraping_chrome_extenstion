@@ -24,7 +24,7 @@ function main(e){
 function showDownloadWindow(blob){
   const now = new Date()
   // e.x. 2022-10-31-103020.csv
-  const nowString = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDay()}-${now.getHours()}${now.getMinutes()}${now.getSeconds()}`
+  const nowString = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}-${now.getHours()}${now.getMinutes()}${now.getSeconds()}`
   let link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
   link.download = `${nowString}.csv`;
@@ -33,7 +33,7 @@ function showDownloadWindow(blob){
 
 // class definition
 /**
- * published date class which is formatted as dd/mm/yyyy e.x. 8/9/2022
+ * published date class whose argument is formatted as dd/mm/yyyy e.x. 8/9/2022
  */
 class PublishedDate {
   // expects mm/dd/yyyy
@@ -43,10 +43,14 @@ class PublishedDate {
     }
 
     const [_month, _day, _year] = _date.split("/");
-    const isMonthValid = _month.length >= 1 && _month.length <= 2
-    const isDayValid = _day.length >= 1 && _day.length <= 2
-    const isYearValid = _year.length === 4
-    if (!isMonthValid || !isDayValid || !isYearValid) {
+    const isMonthLengthValid = _month.length >= 1 && _month.length <= 2;
+    const _monthNumber = Number(_month)
+    const isMonthRangeValid = _monthNumber >= 1 && _monthNumber <= 12
+    const _dayNumber = Number(_day)
+    const isDayRangeValid = _dayNumber >= 1 && _dayNumber <= 31
+    const isDayValid = _day.length >= 1 && _day.length <= 2;
+    const isYearValid = _year.length === 4;
+    if (!isMonthLengthValid || !isMonthRangeValid || !isDayValid || !isDayRangeValid || !isYearValid) {
       throw new SyntaxError("This constructor takes only format mm/dd/yyyy.");
     }
 
@@ -102,6 +106,7 @@ class Video {
 
 class CSVGenerator {
   bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+
   constructor(_titleList, _viewCountList, _dateList) {
     const isTitleValid = Array.isArray(_titleList);
     const isViewCountValid = Array.isArray(_viewCountList);
