@@ -27,7 +27,7 @@ function showDownloadWindow(blob){
 
 // クラス
 class PublishedDate {
-  // expected dd/mm/yyyy
+  // expected mm/dd/yyyy
   constructor(date) {
     [this._month, this._day, this._year] = date.split("/");
   }
